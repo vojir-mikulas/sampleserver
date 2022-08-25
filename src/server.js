@@ -10,7 +10,7 @@ app.use(cors({
     credentials: true,
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
 }))
-
+app.use(express.json());
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
