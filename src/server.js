@@ -3,14 +3,14 @@ const express = require('express')
 const app = express()
 const port = 3000
 let pdf = require("html-pdf")
-app.use((req, res, next) => {
+const cors = require("cors")
 
-    if (req.originalUrl === '/stripe/webhook') {
-        next();
-    } else {
-        express.json()(req, res, next);
-    }
-});
+app.use(cors({
+    origin: "*",
+    credentials: true,
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"]
+}))
+
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
