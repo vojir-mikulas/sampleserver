@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
     res.send('Hello World!')
 })
 app.get('/pdf',(req,res)=>{
-    let options = { format: 'Letter' };
+    let options = { format: 'Letter',childProcessOptions: { env: { OPENSSL_CONF: '/dev/null' } }  };
     let html = "<h1>TVOJE MÁMA</h1>"
 
     pdf.create(html, options).toFile('./businesscard.pdf', function(err, res) {
